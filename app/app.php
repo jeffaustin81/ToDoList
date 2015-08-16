@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Task.php";
+    require_once __DIR__."/../src/Category.php";
 
     session_start();
     if (empty($_SESSION['list_of_tasks'])) {
