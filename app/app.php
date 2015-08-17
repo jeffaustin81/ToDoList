@@ -3,9 +3,12 @@
     require_once __DIR__."/../src/Task.php";
     require_once __DIR__."/../src/Category.php";
 
-    $DB = new PDO('mysql:host=localhost:3306;dbname=to_do');
-
     $app = new Silex\Application();
+
+    $server = 'mysql:host=localhost;dbname=to_do';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'
     ));
@@ -13,7 +16,7 @@
     $app->get("/", function() use ($app) {
         return $app['twig']->render('index.twig');
     });
-    
+
     $app->get("/tasks", function() use ($app) {
         return $app['twig']->render('tasks.html.twig', array('tasks' => Task::getAll()));
     });
@@ -21,7 +24,7 @@
     $app->get("/categories", function() use ($app) {
         return $app['twig']->render('categories.twig', array('categories' => Category::getAll()));
     });
-    
+
     $app->post("/tasks", function() use ($app) {
         $task = new Task($_POST['description']);
         $task->save();
@@ -33,7 +36,7 @@
         Task::deleteAll();
         return $app['twig']->render('index.twig');
     });
-    
+
     $app->post("/categories", function() use ($app) {
         $category = new Category($_POST['name']);
         $category->save();
