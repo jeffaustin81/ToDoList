@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>To Do List</title>
+</head>
+<body>
+	<h1>Categories</h1>
+	
+	{% if categories is not empty %}
+		<p>Here are all your categories:</p>
+		<ul>
+			{% for category in catagories %}
+				<li>{{ category.getName }}</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+	<form action="/categories" method="post">
+		<lable for="name">Category name</lable>
+		<input type="text" name="name" id="name">
+		
+		<button type="submit">Add category</button>
+	</form>
+	<form action="/delete_categories" method="post">
+		<button type="submit">Clear</button>
+	</form>
+</body>
+</html>
