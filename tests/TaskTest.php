@@ -1,8 +1,9 @@
 <?php
 
-    // @backupGlobals disabled
-    // @backStaticAttributes disabled
-
+    /**
+    * @backupGlobals disabled
+    * @backStaticAttributes disabled
+    */
     require_once "src/Task.php";
 
     $server = 'mysql:host=localhost;dbname=to_do_test';
@@ -12,6 +13,11 @@
 
     class TaskTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+            Task::deleteAll();
+        }
+
         function test_save()
         {
             // Arrange
@@ -19,7 +25,7 @@
             $test_task = new Task ($description);
 
             //Act
-            $test_task->$save();
+            $test_task->save();
 
             //Assert
             $result = Task::getAll();
