@@ -6,11 +6,11 @@
 </head>
 <body>
 	<h1>Categories</h1>
-	
+
 	{% if categories is not empty %}
 		<p>Here are all your categories:</p>
 		<ul>
-			{% for category in catagories %}
+			{% for category in categories %}
 				<li>{{ category.getName }}</li>
 			{% endfor %}
 		</ul>
@@ -18,11 +18,13 @@
 	<form action="/categories" method="post">
 		<lable for="name">Category name</lable>
 		<input type="text" name="name" id="name">
-		
+
 		<button type="submit">Add category</button>
 	</form>
 	<form action="/delete_categories" method="post">
 		<button type="submit">Clear</button>
 	</form>
+
+	<p><a href="/">Home</a></p>
 </body>
 </html>

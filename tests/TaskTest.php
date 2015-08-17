@@ -6,7 +6,7 @@
     */
     require_once "src/Task.php";
 
-    $server = 'mysql:host=localhost;dbname=to_do_test';
+    $server = 'mysql:host=localhost;dbname=category_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -65,6 +65,38 @@
             // Assert
             $result = Task::getAll();
             $this->assertEquals([], $result);
+        }
+
+        function test_getId()
+        {
+            //Arrange
+            $description = "Wash the dog";
+            $id = 1;
+            $test_Task = new Task($description, $id);
+
+            //Act
+            $result = $test_Task->getId();
+
+            //Assert
+            $this->assertEquals(1, $result);
+        }
+
+        function test_find()
+        {
+            // Arrange
+            $description = "Wash the dog";
+            $description2 = "Water the lawn";
+            $test_Task = new Task($description);
+            $test_Task->save();
+            $test_Task2 = new Task($description2);
+            $test_Task2->save();
+
+            // Act
+            $id = $test_Task->getId();
+            $results = Task::find($id);
+
+            // Assert
+            $this->assertEquals($test_Task, $results);
         }
     }
 ?>
