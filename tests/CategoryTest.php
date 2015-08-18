@@ -127,12 +127,12 @@
            $test_category_id = $test_category->getId();
 
            $description = "Email client";
-           $user_date = "2015-08-18 00:00:00";
+           $user_date = "2015-08-18";
            $test_task = new Task($description, $user_date, $id, $test_category_id);
            $test_task->save();
 
            $description2 = "Meet with boss";
-           $user_date2 = "2015-08-17 00:00:00";
+           $user_date2 = "2015-08-17";
            $test_task2 = new Task($description2, $user_date2, $id, $test_category_id);
            $test_task2->save();
 

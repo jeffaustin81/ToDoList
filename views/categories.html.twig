@@ -1,17 +1,18 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootsrap.min.css'>
 	<meta charset="UTF-8">
 	<title>To Do List</title>
 </head>
 <body>
+	<div class="container">
 	<h1>{{ category.getName }}</h1>
 
 	{% if tasks is not empty %}
 		<p>Here are the tasks:</p>
 		<ul>
 			{% for task in tasks %}
-				<li>{{ task.getDescription }}</li>
+				<li>{{ task.getDescription }} is due by {{ task.getDate }}</li>
 			{% endfor %}
 		</ul>
 	{% endif %}
@@ -22,6 +23,8 @@
 		<input id="category_id" name="category_id" type="hidden" value="{{ category.getId }}">
 		<label for='description'>Task Descsription</label>
 		<input id='description' name='description' type='text'>
+		<label for='user_date'>Set Due Date:</label>
+		<input id='user_date' name='user_date' type='text'>
 
 		<button type='submit'>Add task</button>
 	</form>
@@ -31,5 +34,6 @@
 	</form>
 
 	<p><a href="/">Home</a></p>
+</div>
 </body>
 </html>

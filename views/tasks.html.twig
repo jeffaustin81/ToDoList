@@ -1,8 +1,10 @@
 <html>
   <head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootsrap.min.css'>
     <title>To Do List</title>
   </head>
   <body>
+    <div class="container">
     <h1>To Do List</h1>
     {% if tasks is not empty%}
     <p>Here are all your tasks:</p>
@@ -23,5 +25,6 @@
         <button type='submit'>Clear</button>
     </form>
     <p><a href="/">Home</a></p>
+    </div>
   </body>
 </html>

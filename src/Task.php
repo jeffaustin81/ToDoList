@@ -47,13 +47,14 @@
         function save()
         {
             $statement = $GLOBALS['DB']->exec("INSERT INTO tasks (description, user_date, category_id) VALUES ('{$this->getDescription()}', '{$this->getDate()}', {$this->getCategoryId()})");
+            // $statement = $GLOBALS['DB']->exec( "SELECT description, user_date FROM tasks ORDER BY user_date");
             // {$this->$category_id()})
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
         static function getAll()
         {
-            $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks;");
+            $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks ORDER BY user_date");
             $tasks = array();
             foreach($returned_tasks as $task) {
                 $description = $task['description'];
