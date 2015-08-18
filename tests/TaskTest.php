@@ -7,7 +7,7 @@
     require_once "src/Task.php";
     require_once "src/Category.php";
 
-    $server = 'mysql:host=localhost:8889;dbname=to_do_test';
+    $server = 'mysql:host=localhost;dbname=to_do_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
