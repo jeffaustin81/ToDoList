@@ -25,5 +25,9 @@
 	{% else %}
 		<p>There are no categories yet!</p>
 	{% endif %}
+
+	<form action="/delete_categories" method="post">
+		<button type="submit">Clear</button>
+	</form>
 </body>
 </html>
