@@ -32,8 +32,9 @@
     });
     $app->post("/tasks", function() use ($app) {
         $description = $_POST['description'];
+        $user_date = $_POST['user_date'];
         $category_id = $_POST['category_id'];
-        $task = new Task($description, $id = null, $category_id);
+        $task = new Task($description, $user_date, $id = null, $category_id);
         $task->save();
         $category = Category::find($category_id);
 
@@ -42,8 +43,8 @@
 
     $app->post("/delete_tasks", function() use ($app) {
         Task::deleteAll();
-        $categories = [];
-        return $app['twig']->render('index.html.twig', array('categories' => $categories));
+
+        return $app['twig']->render('index.html.twig', array('categories' => Category::getAll()));
     });
 
     $app->post("/categories", function() use ($app) {
