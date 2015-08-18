@@ -8,6 +8,7 @@
         function __construct($description, $id = null, $category_id)
         {
             $this->description = $description;
+            // $id->id = $id;
             $this->id = $id;
             $this->category_id = $category_id;
         }
@@ -35,7 +36,8 @@
         function save()
         {
             $statement = $GLOBALS['DB']->exec("INSERT INTO tasks (description, category_id) VALUES ('{$this->getDescription()}', {$this->getCategoryId()})");
-        $this->id = $GLOBALS['DB']->lastInsertId();
+            // {$this->$category_id()})
+            $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
         static function getAll()
