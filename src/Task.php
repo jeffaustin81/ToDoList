@@ -46,9 +46,8 @@
 
         function save()
         {
-            $statement = $GLOBALS['DB']->exec("INSERT INTO tasks (description, user_date, category_id) VALUES ('{$this->getDescription()}', '{$this->getDate()}', {$this->getCategoryId()})");
-            // $statement = $GLOBALS['DB']->exec( "SELECT description, user_date FROM tasks ORDER BY user_date");
-            // {$this->$category_id()})
+            $GLOBALS['DB']->exec("INSERT INTO tasks (description, user_date, category_id) VALUES ('{$this->getDescription()}', '{$this->getDate()}', {$this->getCategoryId()})");
+            
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
