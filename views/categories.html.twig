@@ -1,30 +1,39 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootsrap.min.css'>
 	<meta charset="UTF-8">
 	<title>To Do List</title>
 </head>
 <body>
-	<h1>Categories</h1>
+	<div class="container">
+	<h1>{{ category.getName }}</h1>
 
-	{% if categories is not empty %}
-		<p>Here are all your categories:</p>
+	{% if tasks is not empty %}
+		<p>Here are the tasks:</p>
 		<ul>
-			{% for category in categories %}
-				<li>{{ category.getName }}</li>
+			{% for task in tasks %}
+				<li>{{ task.getDescription }} is due by {{ task.getDate }}</li>
 			{% endfor %}
 		</ul>
 	{% endif %}
-	<form action="/categories" method="post">
-		<lable for="name">Category name</lable>
-		<input type="text" name="name" id="name">
 
-		<button type="submit">Add category</button>
+	<h4>Add a task:</h4>
+
+	<form action="/tasks" method='post'>
+		<input id="category_id" name="category_id" type="hidden" value="{{ category.getId }}">
+		<label for='description'>Task Descsription</label>
+		<input id='description' name='description' type='text'>
+		<label for='user_date'>Set Due Date:</label>
+		<input id='user_date' name='user_date' type='text'>
+
+		<button type='submit'>Add task</button>
 	</form>
-	<form action="/delete_categories" method="post">
+
+	<form action="/delete_tasks" method="post">
 		<button type="submit">Clear</button>
 	</form>
 
 	<p><a href="/">Home</a></p>
+</div>
 </body>
 </html>
